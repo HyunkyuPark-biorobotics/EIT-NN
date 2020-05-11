@@ -4,7 +4,7 @@ import keras.backend as K
 from utils import load_dataset
 
 
-def WPMSE(laplace=True):
+def SSAMSE(laplace=True):
 	kernel = load_dataset("./spatial_sensitivity_matrix.csv")
 	kernel = tf.convert_to_tensor(kernel, dtype=tf.float32)
 
