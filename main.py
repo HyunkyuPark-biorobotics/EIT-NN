@@ -28,7 +28,7 @@ if __name__ == '__main__':
 
 	# Train network
 	model = EITNN_Network(args.input_size, args.image_size, noise_level=args.noise_level)
-	loss = WPMSE(laplace=not args.no_laplace)
+	loss = SSAMSE(laplace=not args.no_laplace)
 	optimizer = optimizers.Adam(lr=args.learning_rate, beta_1=0.9, beta_2=0.999)
 	model.compile(loss=loss, optimizer=optimizer, metrics=['mse'])
 
