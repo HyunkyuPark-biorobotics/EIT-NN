@@ -4,7 +4,7 @@ from keras import optimizers
 from keras.callbacks import EarlyStopping
 
 from network import EITNN_Network
-from wpmse import WPMSE
+from ssamse import SSAMSE
 from utils import load_dataset, save_history
 
 
