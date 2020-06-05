@@ -17,7 +17,7 @@ if __name__ == '__main__':
 	parser.add_argument('--input_size', type=int, default=256, help='input size')
 	parser.add_argument('--image_size', type=int, default=24, help='image size')
 	parser.add_argument('--noise_level', type=float, default=0, help='noise level')
-	parser.add_argument('--no_laplace', action='store_true', help='do *not* use Laplace smoothing')
+	parser.add_argument('--no_SSAMSE', action='store_true', help='do *not* use SSAMSE')
 	args = parser.parse_args()
 
 	# Load dataset
@@ -28,7 +28,7 @@ if __name__ == '__main__':
 
 	# Train network
 	model = EITNN_Network(args.input_size, args.image_size, noise_level=args.noise_level)
-	loss = SSAMSE(laplace=not args.no_laplace)
+	loss = SSAMSE(SSAMSE_switch=not args.no_SSAMSE)
 	optimizer = optimizers.Adam(lr=args.learning_rate, beta_1=0.9, beta_2=0.999)
 	model.compile(loss=loss, optimizer=optimizer, metrics=['mse'])
 
