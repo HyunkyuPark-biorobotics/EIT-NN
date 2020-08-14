@@ -5,7 +5,7 @@ from utils import load_dataset
 
 
 def SSAMSE(SSAMSE_switch=True):
-	kernel = load_dataset("./spatial_sensitivity_matrix.csv")
+	kernel = load_dataset("./spatial_sensitivity_matrix.csv",transpose=True)
 	kernel = tf.convert_to_tensor(kernel, dtype=tf.float32)
 
 	def loss(y_true, y_pred):
